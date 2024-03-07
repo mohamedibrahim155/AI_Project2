@@ -3,10 +3,20 @@
 #include <unordered_map>
 #include "IdleState.h"
 #include "MoveState.h"
+
+struct EnemyInfo
+{
+	float Speed = 2;
+	float WaitTime =0.5f;
+
+	float xRange = 30;
+	float zRange = 17;
+};
+
 class Enemy : public Model
 {
 public:
-	Enemy();
+	Enemy(EnemyInfo& enemy);
 
     void DrawProperties() override;
     void SceneDraw()override;
@@ -23,6 +33,11 @@ public:
 	void OnStateChange(eStates state);
 	void AddState(eStates state, BaseEnemyState* enemyState);
 	void RemoveState(eStates state);
+
+	EnemyInfo enemyInfo;
+
+	void SetColor(const glm::vec4& color);
+
 private:
 	BaseEnemyState* currentState;
 

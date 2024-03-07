@@ -16,7 +16,7 @@ public:
     void StartState() override;
 	void UpdateState(float deltatime) override;
 	void ExitState() override;
-
+	void Render() override;
 	void SetStartPosition(const glm::vec3& position);
 	void SetEndPosition(const glm::vec3& position);
 
@@ -28,11 +28,18 @@ private:
 	glm::vec3 endPosition;
 	glm::vec3 direction;
 
-	float range = 1.5f;
+	float range = 0.5f;
 
 	float moveSpeed = 2;
 
 	glm::vec3 GetRandomPoint();
+
+
+	float maxXRange;
+	float maxZRange;
+
+
+
 
 };
 

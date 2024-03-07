@@ -1,8 +1,10 @@
 #include "IdleState.h"
-
-IdleState::IdleState(Enemy* enemy)
+#include "Enemy.h"
+IdleState::IdleState(Enemy* _enemy)
 {
-	this->enemy = enemy;
+	this->enemy = _enemy;
+
+	waitTime = enemy->enemyInfo.WaitTime;
 }
 
 void IdleState::StartState()
@@ -26,6 +28,11 @@ void IdleState::UpdateState(float deltatime)
 	{
 		timeStep += deltatime;
 	}
+}
+
+void IdleState::Render()
+{
+
 }
 
 void IdleState::SetTime()

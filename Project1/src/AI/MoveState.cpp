@@ -10,6 +10,11 @@ MoveState::MoveState(Enemy* _enemy)
 	startPosition = glm::vec3(0);
 	endPosition = glm::vec3(0);
 	direction = glm::vec3(0);
+
+	maxXRange = enemy->enemyInfo.xRange >30 ? 30: enemy->enemyInfo.xRange;
+	maxZRange = enemy->enemyInfo.zRange > 17 ? 17 : enemy->enemyInfo.zRange;
+
+	moveSpeed = enemy->enemyInfo.Speed;
 }
 
 void MoveState::StartState()
@@ -73,9 +78,13 @@ void MoveState::SetEndPosition(const glm::vec3& position)
 
 glm::vec3 MoveState::GetRandomPoint()
 {
-	float x =  Math::GetRandomFloatNumber(-30,30);
+	float x =  Math::GetRandomFloatNumber(-maxXRange, maxXRange);
 	float y = enemy->transform.position.y;
-	float z = Math::GetRandomFloatNumber(-17, 17);
+	float z = Math::GetRandomFloatNumber(-maxZRange, maxZRange);
 
 	return glm::vec3(x,y,z);
+}
+
+void MoveState::Render()
+{
 }

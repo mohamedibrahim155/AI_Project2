@@ -1,18 +1,19 @@
 #include "Enemy.h"
 #include "../GraphicsRender.h"
-Enemy::Enemy()
+Enemy::Enemy(EnemyInfo& enemy)
 {
+	enemyInfo = enemy;
+
 	LoadModel("Models/Zombie/zombies.obj");
 
 	transform.SetScale(glm::vec3(0.5f));
 	GraphicsRender::GetInstance().AddModelAndShader(this, GraphicsRender::GetInstance().defaultShader);
-
-
 	AddState(IDLE, new IdleState(this));
-	AddState(MOVE_TO, new MoveState(this));
 
 	
 }
+
+
 
 void Enemy::DrawProperties()
 {
@@ -38,6 +39,8 @@ void Enemy::Update(float deltaTime)
 
 void Enemy::Render()
 {
+
+	//GetCurrentState()->Render();
 }
 
 void Enemy::OnDestroy()
@@ -87,6 +90,14 @@ void Enemy::RemoveState(eStates state)
 	if (it != listOfEnemyStates.end())
 	{
 		listOfEnemyStates.erase(it);
+	}
+}
+
+void Enemy::SetColor(const glm::vec4& color)
+{
+	for (std::shared_ptr<Mesh> mesh :  meshes)
+	{
+		mesh->meshMaterial->material()->SetBaseColor(color);
 	}
 }
 

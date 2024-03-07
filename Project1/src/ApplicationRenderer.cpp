@@ -125,11 +125,11 @@ void ApplicationRenderer::WindowInitialize(int width, int height,  std::string w
     GraphicsRender::GetInstance().SetCamera(sceneViewcamera);
 
     sceneViewcamera->InitializeCamera(CameraType::PERSPECTIVE, 45.0f, 0.1f, 100.0f);
-    sceneViewcamera->transform.position = glm::vec3(0, 1.5f,  15.0f);
+    sceneViewcamera->transform.position = glm::vec3(-5.50f, 7.08f, 38.04f);
     sceneViewcamera->transform.SetRotation(glm::vec3(0));
 
     gameScenecamera->InitializeCamera(CameraType::PERSPECTIVE, 45.0f, 0.1f, 100.0f);
-    gameScenecamera->transform.position = glm::vec3(0, 1.5f, 15.0f);
+    gameScenecamera->transform.position = glm::vec3(-5.50f, 7.08f, 38.04f);
     gameScenecamera->transform.SetRotation(glm::vec3(0));
 
 
@@ -220,7 +220,36 @@ void ApplicationRenderer::Start()
      GraphicsRender::GetInstance().AddModelAndShader(floor, defaultShader);
 
  
-     Enemy* enemyType1 = new Enemy();
+     EnemyInfo enemy1Type;
+     enemy1Type.Speed = 10;
+     enemy1Type.WaitTime = 1;
+
+
+     Enemy* enemy1 = new Enemy(enemy1Type);
+     enemy1->AddState(MOVE_TO, new MoveState(enemy1));
+     enemy1->SetColor(glm::vec4(1, 0, 0, 1));
+
+     EnemyInfo enemyType2;
+     enemyType2.Speed = 3;
+     enemyType2.WaitTime = 5;
+
+     Enemy* enemy2 = new Enemy(enemyType2);
+     enemy2->transform.SetPosition(glm::vec3(-5, 0, 5));
+     enemy2->AddState(MOVE_TO, new MoveState(enemy2));
+     enemy2->SetColor(glm::vec4(1, 1, 0, 1));
+
+
+     EnemyInfo enemyType3;
+     enemyType3.Speed = 3;
+     enemyType3.WaitTime = 5;
+     enemyType3.xRange = 5;
+     enemyType3.zRange = 5;
+
+     Enemy* enemy3 = new Enemy(enemyType3);
+     enemy3->transform.SetPosition(glm::vec3(-10, 0, 5));
+     enemy3->AddState(MOVE_TO, new MoveState(enemy3));
+     enemy3->SetColor(glm::vec4(1, 0, 1, 1));
+
 
 }
 

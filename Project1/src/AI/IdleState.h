@@ -1,7 +1,7 @@
 #pragma once
 #include "BaseEnemyState.h"
 
-
+class Enemy;
 class IdleState : public BaseEnemyState
 {
 public:
@@ -11,6 +11,7 @@ public:
 	void StartState() override;
 	void ExitState() override;
 	void UpdateState(float deltatime) override;
+	void Render() override;
 
 	void SetTime();
 
