@@ -4726,7 +4726,7 @@ void ImGui::NewFrame()
     IM_ASSERT(GImGui != NULL && "No current context. Did you call ImGui::CreateContext() and ImGui::SetCurrentContext() ?");
     ImGuiContext& g = *GImGui;
 
-    // Remove pending delete hooks before frame start.
+    // RemoveState pending delete hooks before frame start.
     // This deferred removal avoid issues of removal while iterating the hook vector
     for (int n = g.Hooks.Size - 1; n >= 0; n--)
         if (g.Hooks[n].Type == ImGuiContextHookType_PendingRemoval_)
@@ -10583,7 +10583,7 @@ void ImGui::SetNextItemWidth(float item_width)
     g.NextItemData.Width = item_width;
 }
 
-// FIXME: Remove the == 0.0f behavior?
+// FIXME: RemoveState the == 0.0f behavior?
 void ImGui::PushItemWidth(float item_width)
 {
     ImGuiContext& g = *GImGui;
@@ -16274,7 +16274,7 @@ static void ImGui::DockNodeRemoveWindow(ImGuiDockNode* node, ImGuiWindow* window
         window->Hidden = true;
     }
 
-    // Remove window
+    // RemoveState window
     bool erased = false;
     for (int n = 0; n < node->Windows.Size; n++)
         if (node->Windows[n] == window)
@@ -16288,7 +16288,7 @@ static void ImGui::DockNodeRemoveWindow(ImGuiDockNode* node, ImGuiWindow* window
     if (node->VisibleWindow == window)
         node->VisibleWindow = NULL;
 
-    // Remove tab and possibly tab bar
+    // RemoveState tab and possibly tab bar
     node->WantHiddenTabBarUpdate = true;
     if (node->TabBar)
     {
@@ -16433,7 +16433,7 @@ static ImGuiWindow* ImGui::DockNodeFindWindowByID(ImGuiDockNode* node, ImGuiID i
     return NULL;
 }
 
-// - Remove inactive windows/nodes.
+// - RemoveState inactive windows/nodes.
 // - Update visibility flag.
 static void ImGui::DockNodeUpdateFlagsAndCollapse(ImGuiDockNode* node)
 {
@@ -16454,7 +16454,7 @@ static void ImGui::DockNodeUpdateFlagsAndCollapse(ImGuiDockNode* node)
     if (node->ChildNodes[1])
         DockNodeUpdateFlagsAndCollapse(node->ChildNodes[1]);
 
-    // Remove inactive windows, collapse nodes
+    // RemoveState inactive windows, collapse nodes
     // Merge node flags overrides stored in windows
     node->LocalFlagsInWindows = ImGuiDockNodeFlags_None;
     for (int window_n = 0; window_n < node->Windows.Size; window_n++)
@@ -16587,7 +16587,7 @@ static void ImGui::DockNodeUpdateForRootNode(ImGuiDockNode* node)
 
 static void DockNodeSetupHostWindow(ImGuiDockNode* node, ImGuiWindow* host_window)
 {
-    // Remove ourselves from any previous different host window
+    // RemoveState ourselves from any previous different host window
     // This can happen if a user mistakenly does (see #4295 for details):
     //  - N+0: DockBuilderAddNode(id, 0)    // missing ImGuiDockNodeFlags_DockSpace
     //  - N+1: NewFrame()                   // will create floating host window for that node
@@ -16610,7 +16610,7 @@ static void ImGui::DockNodeUpdate(ImGuiDockNode* node)
     if (node->IsRootNode())
         DockNodeUpdateForRootNode(node);
 
-    // Remove tab bar if not needed
+    // RemoveState tab bar if not needed
     if (node->TabBar && node->IsNoTabBar())
         DockNodeRemoveTabBar(node);
 
@@ -19005,7 +19005,7 @@ static void ImGui::DockSettingsRenameNodeReferences(ImGuiID old_node_id, ImGuiID
             settings->DockId = new_node_id;
 }
 
-// Remove references stored in ImGuiWindowSettings to the given ImGuiDockNodeSettings
+// RemoveState references stored in ImGuiWindowSettings to the given ImGuiDockNodeSettings
 static void ImGui::DockSettingsRemoveNodeReferences(ImGuiID* node_ids, int node_ids_count)
 {
     ImGuiContext& g = *GImGui;

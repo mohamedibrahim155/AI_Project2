@@ -26,6 +26,7 @@
 #include "InputManager/InputManager.h"
 #include "EntityManager/EntityManager.h"
 #include "CameraManager.h"
+#include "AI/Enemy.h"
 
 
 class ApplicationRenderer

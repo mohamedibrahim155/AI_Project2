@@ -7956,7 +7956,7 @@ static void ImGui::TabBarLayout(ImGuiTabBar* tab_bar)
         ImGuiTabItem* tab = &tab_bar->Tabs[tab_src_n];
         if (tab->LastFrameVisible < tab_bar->PrevFrameVisible || tab->WantClose)
         {
-            // Remove tab
+            // RemoveState tab
             if (tab_bar->VisibleTabId == tab->ID) { tab_bar->VisibleTabId = 0; }
             if (tab_bar->SelectedTabId == tab->ID) { tab_bar->SelectedTabId = 0; }
             if (tab_bar->NextSelectedTabId == tab->ID) { tab_bar->NextSelectedTabId = 0; }

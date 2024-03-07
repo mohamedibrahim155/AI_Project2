@@ -141,10 +141,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Dependencies\glad\src\glad.c" />
+    <ClCompile Include="src\AI\Enemy.cpp" />
+    <ClCompile Include="src\AI\EnemyStateMachine.cpp" />
+    <ClCompile Include="src\AI\IdleState.cpp" />
+    <ClCompile Include="src\AI\BaseEnemyState.cpp" />
     <ClCompile Include="Extern\imGui\ImCurveEdit.cpp" />
     <ClCompile Include="Extern\imGui\ImGradient.cpp" />
     <ClCompile Include="Extern\imGui\ImGuizmo.cpp" />
     <ClCompile Include="Extern\imGui\ImSequencer.cpp" />
+    <ClCompile Include="src\AI\MoveState.cpp" />
     <ClCompile Include="src\Math.cpp" />
     <ClCompile Include="src\PostProcessing\SinglePassEffect.cpp" />
     <ClCompile Include="src\PostProcessing\PixelizationEffect.cpp" />
@@ -204,11 +209,17 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\stb_image.h" />
+    <ClInclude Include="src\AI\eStates.h" />
+    <ClInclude Include="src\AI\Enemy.h" />
+    <ClInclude Include="src\AI\EnemyStateMachine.h" />
+    <ClInclude Include="src\AI\IdleState.h" />
+    <ClInclude Include="src\AI\BaseEnemyState.h" />
     <ClInclude Include="Extern\imGui\ImCurveEdit.h" />
     <ClInclude Include="Extern\imGui\ImGradient.h" />
     <ClInclude Include="Extern\imGui\ImGuizmo.h" />
     <ClInclude Include="Extern\imGui\ImSequencer.h" />
     <ClInclude Include="Extern\imGui\ImZoomSlider.h" />
+    <ClInclude Include="src\AI\MoveState.h" />
     <ClInclude Include="src\Math.h" />
     <ClInclude Include="src\PostProcessing\SinglePassEffect.h" />
     <ClInclude Include="src\PostProcessing\PixelizationEffect.h" />
