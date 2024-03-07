@@ -222,7 +222,7 @@ void ApplicationRenderer::Start()
  
      EnemyInfo enemy1Type;
      enemy1Type.Speed = 10;
-     enemy1Type.WaitTime = 1;
+     enemy1Type.WaitTime = 0.5f;
 
 
      Enemy* enemy1 = new Enemy(enemy1Type);
@@ -241,7 +241,7 @@ void ApplicationRenderer::Start()
 
      EnemyInfo enemyType3;
      enemyType3.Speed = 3;
-     enemyType3.WaitTime = 5;
+     enemyType3.WaitTime = 0.5f;
      enemyType3.xRange = 5;
      enemyType3.zRange = 5;
 

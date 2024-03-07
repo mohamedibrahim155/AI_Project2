@@ -38,5 +38,6 @@ void IdleState::Render()
 void IdleState::SetTime()
 {
 	timeStep = 0;
-	waitTime = 2;
+	waitTime = enemy->enemyInfo.WaitTime;
+
 }

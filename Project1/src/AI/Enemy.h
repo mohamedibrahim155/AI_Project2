@@ -7,7 +7,7 @@
 struct EnemyInfo
 {
 	float Speed = 2;
-	float WaitTime =0.5f;
+	float WaitTime =0.2f;
 
 	float xRange = 30;
 	float zRange = 17;
